@@ -26,7 +26,7 @@ function Player:handleEvent(e)
             if key == KEY_UP then
                 local pos = self.shape:getPosition()
                 
-                -- NOTES: screen measurement is from top(0) to down(n)
+                -- NOTES: screen measurement is from top/left(0) to down/right(n)
                 self.shape:setPosition(pos.x, pos.y-25)
             elseif key == KEY_DOWN then
                 local pos = self.shape:getPosition()
