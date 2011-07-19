@@ -17,7 +17,7 @@ class "Player" (EventHandler)
 function Player:Player(x, y, human_player)
     self.shape = ScreenShape(SHAPE_RECT, 10, 100)
     self.shape:setPosition(x,y)
-    screen:addPhysicsChild(self.shape, ENTITY_RECT, true)
+    screen:addChild(self.shape)
 
     if human_player == true then
         self:EventHandler()
