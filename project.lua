@@ -25,7 +25,6 @@ function Player:Player(x, y, human_player)
         Services.Core:getInput():addEventListener(self, EVENT_KEYUP)
         Services.Core:getInput():addEventListener(self, EVENT_KEYDOWN)
     end
-        
 end
 
 function Player:handleEvent(e)
@@ -57,9 +56,12 @@ class "Ball" (EventHandler)
 
 function Ball:Ball()
     self.shape = ScreenShape(SHAPE_CIRCLE, 10, 10)
-    self.shape:setPositionMode(POSITION_CENTER)
+    --self.shape:setPositionMode(POSITION_CENTER)
     self.shape:setPosition(320,240)
-    screen:addPhysicsChild(self.shape, ENTITY_CIRCLE, true)
+    local friction = 0.1
+    local density = 0       -- weight of the object
+    local restitution = 5   -- controls bounce
+    screen:addPhysicsChild(self.shape, ENTITY_CIRCLE, false, friction, density, restitution)
 end
 
 -- end of Ball class
