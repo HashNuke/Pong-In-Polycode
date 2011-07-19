@@ -13,7 +13,7 @@ end
 
 class "Ball" (EventHandler)
 
-function Ball:Ball
+function Ball:Ball()
     self.shape = ScreenShape(SHAPE_CIRCLE, 10, 10)
     self.shape:setPositionMode(POSITION_CENTER)
     self.shape:setPosition(320,240)
