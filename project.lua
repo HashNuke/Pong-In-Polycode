@@ -10,4 +10,4 @@ function Player:Player(x,y)
 end
 
 human = Player(10,50)
-
+computer = Player(630,50)
