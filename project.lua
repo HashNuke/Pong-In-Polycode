@@ -1,12 +1,23 @@
-screen = Screen()
+screen = PhysicsScreen(1, 60)
+
+class "Wall"
+
+function Wall:Wall(width, height, posX, posY)
+    self.shape = ScreenShape(SHAPE_RECT, width, height)
+    self.shape:setColor(0,0,0,1)
+    self.shape:setPositionMode(POSITION_CENTER)
+    self.shape:setPosition(posX, posY)
+    screen:addPhysicsChild(self.shape, ENTITY_RECT, true)
+end
+
+-- end of Wall class
 
 class "Player" (EventHandler)
 
 function Player:Player(x, y, human_player)
     self.shape = ScreenShape(SHAPE_RECT, 10, 100)
-    self.shape:setPositionMode(POSITION_CENTER)
     self.shape:setPosition(x,y)
-    screen:addChild(self.shape)
+    screen:addPhysicsChild(self.shape, ENTITY_RECT, true)
 
     if human_player == true then
         self:EventHandler()
@@ -48,11 +59,17 @@ function Ball:Ball()
     self.shape = ScreenShape(SHAPE_CIRCLE, 10, 10)
     self.shape:setPositionMode(POSITION_CENTER)
     self.shape:setPosition(320,240)
-    screen:addChild(self.shape)
+    screen:addPhysicsChild(self.shape, ENTITY_CIRCLE, true)
 end
 
 -- end of Ball class
 
-human = Player(10, 50, true)
-computer = Player(630, 50, false)
-ball = Ball()
+human = Player(15, 480/2, true)
+computer = Player(625, 480/2, false)
+ball = Ball(640/2, 480/2)
+
+leftWall = Wall(10, 480, 5, 480/2)
+rightWall = Wall(10, 480, 635, 480/2)
+topWall = Wall(640, 10, 640/2, 5)
+bottomWall = Wall(640, 10, 640/2, 475)
+

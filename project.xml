@@ -4,4 +4,7 @@
     <packedItems>
         <item path="resources" type="folder"/>
     </packedItems>
+    <modules>
+        <module>Physics2D</module>
+    </modules>
 </PolycodeProject>
