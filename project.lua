@@ -1,5 +1,3 @@
-screen = PhysicsScreen(1, 60)
-
 class "Wall"
 
 function Wall:Wall(width, height, posX, posY)
@@ -58,7 +56,7 @@ function Ball:Ball()
     self.shape = ScreenShape(SHAPE_CIRCLE, 10, 10)
     self.shape:setPositionMode(POSITION_CENTER)
     self.shape:setPosition(320,240)
-    
+
     local friction = 0.1
     local density = 0       -- weight of the object
     local restitution = 5   -- controls bounce
@@ -66,6 +64,8 @@ function Ball:Ball()
 end
 
 -- end of Ball class
+
+screen = PhysicsScreen(1, 60)   -- used as global in classes, so has to be declared before others
 
 human = Player(15, 480/2, true)
 computer = Player(625, 480/2, false)
