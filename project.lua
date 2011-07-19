@@ -17,7 +17,7 @@ class "Player" (EventHandler)
 function Player:Player(x, y, human_player)
     self.shape = ScreenShape(SHAPE_RECT, 10, 100)
     self.shape:setPosition(x,y)
-    screen:addChild(self.shape)
+    screen:addCollisionChild(self.shape, ENTITY_RECT)
 
     if human_player == true then
         self:EventHandler()
