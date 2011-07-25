@@ -7,7 +7,6 @@ function Wall:Wall(width, height, posX, posY)
     self.shape:setPosition(posX, posY)
     screen:addPhysicsChild(self.shape, ENTITY_RECT, true)
 end
-
 -- end of Wall class
 
 class "Player" (EventHandler)
@@ -18,8 +17,7 @@ function Player:Player(x, y, human_player)
     screen:addCollisionChild(self.shape, ENTITY_RECT)
 
     if human_player == true then
-        self:EventHandler()
-
+        self:EventHandler()     -- register event handler
         Services.Core:getInput():addEventListener(self, EVENT_KEYUP)
         Services.Core:getInput():addEventListener(self, EVENT_KEYDOWN)
     end
@@ -33,9 +31,7 @@ function Player:handleEvent(e)
         if e:getEventCode() == EVENT_KEYDOWN then
             if key == KEY_UP then
                 local pos = self.shape:getPosition()
-                
-                -- NOTES: screen measurement is from top/left(0) to down/right(n)
-                self.shape:setPosition(pos.x, pos.y-25)
+                self.shape:setPosition(pos.x, pos.y-25)     --NOTES: measure top/left(0) to down/right(n)
             elseif key == KEY_DOWN then
                 local pos = self.shape:getPosition()
                 self.shape:setPosition(pos.x, pos.y+25)
@@ -43,7 +39,6 @@ function Player:handleEvent(e)
         end
     end
 end
-
 -- end of player class
 
 class "Ball" (EventHandler)
@@ -58,7 +53,6 @@ function Ball:Ball()
     local restitution = 5   -- bounce of the object
     screen:addPhysicsChild(self.shape, ENTITY_CIRCLE, false, friction, density, restitution)
 end
-
 -- end of Ball class
 
 screen = PhysicsScreen(1, 60)   -- used as global in classes, so has to be declared before others
@@ -73,4 +67,3 @@ topWall = Wall(640, 10, 640/2, 5)
 bottomWall = Wall(640, 10, 640/2, 475)
 
 screen:applyImpulse(ball.shape, 100, 0)
-
