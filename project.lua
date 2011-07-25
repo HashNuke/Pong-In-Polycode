@@ -76,3 +76,5 @@ rightWall = Wall(10, 480, 635, 480/2)
 topWall = Wall(640, 10, 640/2, 5)
 bottomWall = Wall(640, 10, 640/2, 475)
 
+screen:applyImpulse(ball.shape, 100, 0)
+
