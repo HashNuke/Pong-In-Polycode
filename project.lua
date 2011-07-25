@@ -40,10 +40,6 @@ function Player:handleEvent(e)
                 local pos = self.shape:getPosition()
                 self.shape:setPosition(pos.x, pos.y+25)
             end
-        elseif e:getEventCode() == EVENT_KEYUP then
-            if key == KEY_DOWN or key == KEY_UP then
-                -- do something
-            end
         end
     end
 end
@@ -59,7 +55,7 @@ function Ball:Ball()
 
     local friction = 0.1
     local density = 0       -- weight of the object
-    local restitution = 5   -- controls bounce
+    local restitution = 5   -- bounce of the object
     screen:addPhysicsChild(self.shape, ENTITY_CIRCLE, false, friction, density, restitution)
 end
 
