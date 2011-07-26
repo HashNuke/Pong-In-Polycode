@@ -2,6 +2,7 @@
     <backgroundColor red="0.25" green="0.25" blue="0.25" />
     <entryPoint>project.lua</entryPoint>
     <packedItems>
+        <item path="entities" type="folder"/>
         <item path="resources" type="folder"/>
     </packedItems>
     <modules>
